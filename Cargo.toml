@@ -1,0 +1,10 @@
+[package]
+name = "opencvtest"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+opencv = "0.94.4"
+teloxide = { version = "0.15.0", features = ["macros"] }
+tokio = { version =  "1.8", features = ["rt-multi-thread", "macros"] }
+bytes = "1.10.0"
