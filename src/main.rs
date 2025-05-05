@@ -2,6 +2,7 @@ use teloxide::prelude::*;
 
 use opencvtest::stickers::stickers::Stickers;
 use opencvtest::converter::converter::Converter;
+use opencvtest::poller::poller::BotPoller;
 use opencvtest::env_args::{env_args, env_args::Mode};
 
 use opencv::imgcodecs;
@@ -27,7 +28,9 @@ async fn main() {
                         Ok(pack) => println!("Done! Get your sticker trap at {}", pack.url),
                         Err(e) => eprintln!("Error creating stickerpack: {}", e)
                     }
-                }
+                },
+
+                Mode::PollMode => {BotPoller::poll(bot).await; std::process::exit(0);}
             }
         },
 
