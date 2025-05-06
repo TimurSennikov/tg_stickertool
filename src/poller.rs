@@ -16,16 +16,8 @@ pub mod poller {
             teloxide::repl(bot, async |bot: Bot, message: Message| {
                 if let MessageKind::Common(ref msgcommon) = message.kind {
                     if let MediaKind::Photo(m) = &msgcommon.media_kind {
-                        if let Some(caption) = message.caption() {
-                            if caption != "хочу стикер сука" {
-                                return Ok(());
-                            }
-                        } else {
-                            return Ok(());
-                        }
-
                         if let None = message.from {
-                            bot.send_message(message.chat.id, "В анонке нельзя уёбище.")
+                            bot.send_message(message.chat.id, "Cannot get your id.")
                                 .await
                                 .expect("Failed to send message!");
                             return Ok(());
@@ -60,7 +52,7 @@ pub mod poller {
                             .await
                             .expect("Failed to send message!");
                         if let Err(_) = bot.download_file(&file.path, &mut dst).await {
-                            bot.send_message(message.chat.id, "Бля не получается скачать.")
+                            bot.send_message(message.chat.id, "Failed to download photo.")
                                 .await
                                 .expect("Failed to send message!");
                         }
@@ -68,13 +60,13 @@ pub mod poller {
                             opencv::imgcodecs::imread(&fname, opencv::imgcodecs::IMREAD_COLOR)
                                 .expect("Failed to read image!");
 
-                        bot.send_message(message.chat.id, "Короче разбиваю анус на 25 частей ща.")
+                        bot.send_message(message.chat.id, "Splitting photo to 25 pieces.")
                             .await
                             .expect("Failed to send message!");
                         let stickers = Converter::split_for_tg(&img_orig).unwrap();
                         bot.send_message(
                             message.chat.id,
-                            "Так ну типа вроде разбил ок да ща соберу",
+                            "OK! Collecting pack...",
                         )
                         .await
                         .expect("Failed to send message!");
@@ -90,7 +82,7 @@ pub mod poller {
 
                         bot.send_message(
                             message.chat.id,
-                            format!("Бля вот твои стикеры гандон {}", r.url),
+                            format!("Here is your pack: {}", r.url),
                         )
                         .await
                         .expect("Failed to send message!");
