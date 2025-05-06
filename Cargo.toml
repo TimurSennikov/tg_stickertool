@@ -1,7 +1,11 @@
 [package]
-name = "opencvtest"
+name = "sticktool"
 version = "0.1.0"
 edition = "2024"
+
+license = "MIT OR Apache-2.0"
+
+description = "A telegram tool for creating trap stickerpacks from single photo or stickerpacks with all photos from specified directory."
 
 [dependencies]
 opencv = "0.94.4"
