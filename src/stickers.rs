@@ -46,7 +46,7 @@ pub mod stickers {
                     format: StickerFormat::Static,
                     emoji_list: vec!["💤".to_string()],
                     mask_position: None,
-                    keywords: vec!["sex".to_string()],
+                    keywords: vec!["stick".to_string()],
                 });
             } else {
                 return Err("Error!");
@@ -77,7 +77,7 @@ pub mod stickers {
                 format: StickerFormat::Static,
                 emoji_list: vec!["💤".to_string()],
                 mask_position: None,
-                keywords: vec!["sex".to_string()],
+                keywords: vec!["stick".to_string()],
             })
         }
 
